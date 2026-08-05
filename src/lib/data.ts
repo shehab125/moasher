@@ -234,7 +234,7 @@ export function getComparableTransactions(input: PropertyInput, limit = 10): Com
   const unique: Comparable[] = [];
   const seen = new Set<string>();
   for (const item of mapped) {
-    const key = `${item.district}-${item.areaSqm}-${item.totalPrice}-${item.date}`;
+    const key = `${item.district}-${Math.round(item.areaSqm)}-${Math.round(item.pricePerSqm)}`;
     if (!seen.has(key)) {
       seen.add(key);
       unique.push(item);
