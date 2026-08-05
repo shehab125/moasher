@@ -16,7 +16,7 @@ import {
 import { formatSar } from '../lib/muasher';
 import { useI18n } from '../lib/i18n';
 
-type PublicPage = 'landing' | 'features' | 'use-cases' | 'pricing' | 'login' | 'register';
+type PublicPage = 'landing' | 'features' | 'use-cases' | 'login' | 'register';
 
 const marketingPreview = {
   investmentScore: 82,
@@ -34,7 +34,6 @@ export function LandingPage({ page }: { page: PublicPage }) {
       {page === 'landing' && <LandingContent />}
       {page === 'features' && <FeaturesContent />}
       {page === 'use-cases' && <UseCasesContent />}
-      {page === 'pricing' && <PricingContent />}
       <Footer />
     </div>
   );
@@ -57,7 +56,6 @@ function PublicNav() {
         <nav className="hidden items-center gap-6 text-sm font-bold text-slate-600 md:flex">
           <Link to="/features" className="hover:text-emerald-800">{t('navFeatures')}</Link>
           <Link to="/use-cases" className="hover:text-emerald-800">{t('navUseCases')}</Link>
-          <Link to="/pricing" className="hover:text-emerald-800">{t('navPricing')}</Link>
           <Link to="/sample-report" className="hover:text-emerald-800">{t('navSampleReport')}</Link>
         </nav>
         <div className="flex items-center gap-2">
@@ -121,8 +119,6 @@ function LandingContent() {
           ))}
         </div>
       </Section>
-
-      <PricingContent compact />
 
       <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6">
         <div className="premium-shell overflow-hidden bg-gradient-to-br from-emerald-900 to-slate-950 p-8 text-white md:p-10">
@@ -201,34 +197,6 @@ function UseCasesContent() {
   );
 }
 
-function PricingContent({ compact = false }: { compact?: boolean }) {
-  const { t } = useI18n();
-  const plans = [
-    ['مجاني', '0 ر.س', ['تقريران شهريًا', 'تقييم أساسي', 'مقارنة سوقية أساسية']],
-    ['احترافي', '199 ر.س/شهر', ['20 تقريرًا شهريًا', 'تصدير PDF', 'توصية ذكية', 'تحليل مخاطر']],
-    ['أعمال', '499 ر.س/شهر', ['100 تقرير شهريًا', 'هوية الشركة', 'تقارير متقدمة', 'دعم أولوية']],
-    ['مؤسسي', 'حسب الطلب', ['تقارير مخصصة', 'تكامل API', 'مصادر بيانات خاصة', 'لوحة مخصصة']],
-  ];
-  return (
-    <Section title={compact ? t('sectionPricingTitle') : t('navPricing')} subtitle={t('sectionPricingSubtitle')}>
-      <div className="grid gap-4 lg:grid-cols-4">
-        {plans.map(([name, price, items]) => (
-          <div key={name as string} className="premium-card p-6">
-            <h3 className="text-lg font-black text-slate-950">{name}</h3>
-            <div className="mt-3 text-2xl font-black text-emerald-800">{price}</div>
-            <ul className="mt-6 space-y-3">
-              {(items as string[]).map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm font-bold text-slate-600">
-                  <Check size={16} className="mt-0.5 shrink-0 text-emerald-600" /> {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
 
 function ReportPreview() {
   const { t } = useI18n();

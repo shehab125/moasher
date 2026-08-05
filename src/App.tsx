@@ -20,7 +20,6 @@ export function App() {
             <Route path="/" element={<LandingPage page="landing" />} />
             <Route path="/features" element={<LandingPage page="features" />} />
             <Route path="/use-cases" element={<LandingPage page="use-cases" />} />
-            <Route path="/pricing" element={<LandingPage page="pricing" />} />
             <Route path="/sample-report" element={<ReportPage mode="sample" />} />
             <Route path="/login" element={<PublicOnlyRoute><LoginPage /></PublicOnlyRoute>} />
             <Route path="/register" element={<PublicOnlyRoute><RegisterPage /></PublicOnlyRoute>} />
